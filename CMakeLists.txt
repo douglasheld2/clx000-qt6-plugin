@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.29.3)
 project(clx000canbus)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -8,13 +8,14 @@ enable_language(CXX)
 set(RELEASE_NAME clx000canbus)
 
 # Find required Qt dependencies.
-set(REQUIRED_QT5_COMPONENTS
+set(REQUIRED_QT6_COMPONENTS
     Core
     SerialBus
     SerialPort
     )
 
-find_package(Qt5 COMPONENTS ${REQUIRED_QT5_COMPONENTS} REQUIRED)
+find_package(Qt6 6.7.2 REQUIRED)
+find_package(Qt6 COMPONENTS ${REQUIRED_QT6_COMPONENTS} REQUIRED)
 
 # All core source and header files, sorted alphabetically.
 set(SOURCE_FILES
@@ -46,7 +47,7 @@ set_property(TARGET ${RELEASE_NAME} PROPERTY CXX_STANDARD_REQUIRED YES)
 set_property(TARGET ${RELEASE_NAME} PROPERTY CXX_EXTENSIONS NO)
 
 # General Qt configuration.
-if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_compile_definitions(${RELEASE_NAME} QT_DEBUG)
 else()
     add_compile_definitions(${RELEASE_NAME} QT_NO_DEBUG)
@@ -54,8 +55,8 @@ else()
 endif()
 
 # Link against all required Qt modules.
-foreach(QT_COMPONENT ${REQUIRED_QT5_COMPONENTS})
-    target_link_libraries(${RELEASE_NAME} "Qt5::${QT_COMPONENT}")
+foreach(QT_COMPONENT ${REQUIRED_QT6_COMPONENTS})
+    target_link_libraries(${RELEASE_NAME} "Qt6::${QT_COMPONENT}")
 endforeach()
 
 add_custom_command(TARGET ${RELEASE_NAME} POST_BUILD

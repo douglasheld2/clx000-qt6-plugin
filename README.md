@@ -1,5 +1,5 @@
-# Qt5 plugin for the CLX000 CAN logger/interface
-This project contains source code for a [Qt5 Serial Bus](https://doc.qt.io/qt-5/qtserialbus-index.html) module plugin. The purpose is to allow the CLX000 CAN bus data logger & interface from CSS Electronics to stream data into applications utilizing the Qt5 Serial Bus framework (e.g. [SavvyCAN](https://github.com/collin80/SavvyCAN)).
+# Qt6 plugin for the CLX000 CAN logger/interface
+This project contains source code for a [Qt6 Serial Bus](https://doc.qt.io/qt-6/qtserialbus-index.html) module plugin. The purpose is to allow the CLX000 CAN bus data logger & interface from CSS Electronics to stream data into applications utilizing the Qt6 Serial Bus framework (e.g. [SavvyCAN](https://github.com/collin80/SavvyCAN)).
 
 ----
 
@@ -7,7 +7,14 @@ This project contains source code for a [Qt5 Serial Bus](https://doc.qt.io/qt-5/
 If not targeting a system-wide Qt installation, the `vcpkg` (integrated as a git submodule) can be utilized. Current configuration is only enabled for [CMake](https://cmake.org/).
 
 ### Building with vcpkg
-First, bootstrap the [vcpkg](https://github.com/microsoft/vcpkg) installation in the submodule.
+Download the code to your development environment. Note that `--recursive` will include the submodule files.
+
+```
+git clone --recursive https://github.com/douglasheld2/clx000-qt6-plugin.git
+cd clx000-qt6-plugin
+```
+
+Next, bootstrap the [vcpkg](https://github.com/microsoft/vcpkg) installation in the submodule.
 
 ```
 ./vcpkg/bootstrap-vcpkg.sh
@@ -24,7 +31,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
 During configuration, all required dependencies should be downloaded, built and installed locally in the `vcpkg` folder. After configuration, build the plugin with
 
 ```
-cmake --build --target clx000canbus
+cmake --build .. --target clx000canbus
 ```
 
 ----
@@ -32,10 +39,11 @@ cmake --build --target clx000canbus
 ## Installation
 
 ### System-wide usage
-Copy the module to the system Qt5 installation into the `plugins/canbus` directory.
+Copy the module to the system Qt6 installation into the `plugins/canbus` directory. For example, `cp clx000canbus.so Qt/6.7.2/gcc_64/plugins/canbus/ `
 
 ### Application local usage.
-Create the same structure as above under the applications plugins folders, such that the module is present in `plugins_folder/canbus`. The application must have been built with the local path for loading modules.
+Copy the module to the application's plugin directory, with similar directory structure. For example, `cp clx000canbus.dylib Applications/SavvyCAN.app/Contents/PlugIns/canbus/ `. The `canbus` directory may first need to be created.
+Note, The application must have been built with the local path for loading modules.
 
 ----
 ## About the CLX000

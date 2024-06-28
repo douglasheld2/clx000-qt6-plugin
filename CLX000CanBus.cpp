@@ -3,6 +3,7 @@
 #include <QDataStream>
 #include <QDebug>
 #include <QtSerialPort/QSerialPortInfo>
+#include <QCanBusDevice>
 
 #include "CRC16.h"
 
@@ -31,12 +32,14 @@ QList<QCanBusDeviceInfo> CLX000CanBus::interfaces() {
         // Create new interface description for this.
         result.push_back(
             createDeviceInfo(
-                portInfo.portName(),
-                portInfo.serialNumber(),
-                description,
-                0,
-                false,
-                false
+                description,                // plugin
+                portInfo.portName(),        // name
+                portInfo.serialNumber(),    // serialNumber
+                description,                // description
+                description,                // alias
+                0,                          // channel
+                false,                      // isVirtual
+                false                       // isFlexibleDataRateCapable
             )
         );
     }
