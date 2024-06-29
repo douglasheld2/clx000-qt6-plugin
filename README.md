@@ -3,35 +3,35 @@ This project contains source code for a [Qt6 Serial Bus](https://doc.qt.io/qt-6/
 
 ----
 
-## Building
-If not targeting a system-wide Qt installation, the `vcpkg` (integrated as a git submodule) can be utilized. Current configuration is only enabled for [CMake](https://cmake.org/).
-
-### Building with vcpkg
-Download the code to your development environment. Note that `--recursive` will include the submodule files.
-
-```
-git clone --recursive https://github.com/douglasheld2/clx000-qt6-plugin.git
-cd clx000-qt6-plugin
-```
-
-Next, bootstrap the [vcpkg](https://github.com/microsoft/vcpkg) installation in the submodule.
+## Configuring
+First install Qt version 6.7.2 or higher. See [HOWTO](https://github.com/collin80/SavvyCAN/discussions/804)
+Change to the directory where you extracted/cloned this code.
+Create a new `build` subdirectory to hold ephemeral build artifacts created by `cmake`.
+Use the `cmake` compiler provided in the Qt installation, and reference its location with the CMAKE_PREFIX_PATH variable.
 
 ```
-./vcpkg/bootstrap-vcpkg.sh
+export PATH=~/Qt/Tools/CMake/bin:$PATH
+
+mkdir build && cd build
+cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.2/gcc_64/lib/cmake ..
 ```
 
-Create a folder for out-of-tree building, and configure cmake.
+----
+
+## Compiling
+After configuration, build the plugin with
 
 ```
-mkdir build
-cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
+cmake --build .
 ```
 
-During configuration, all required dependencies should be downloaded, built and installed locally in the `vcpkg` folder. After configuration, build the plugin with
+----
+
+## Cleaning
+Cleaning is simply a matter of removing the `build` directory.
 
 ```
-cmake --build .. --target clx000canbus
+rm -rf build
 ```
 
 ----
@@ -39,10 +39,11 @@ cmake --build .. --target clx000canbus
 ## Installation
 
 ### System-wide usage
+
 Copy the module to the system Qt6 installation into the `plugins/canbus` directory. For example, `cp clx000canbus.so Qt/6.7.2/gcc_64/plugins/canbus/ `
 
 ### Application local usage.
-Copy the module to the application's plugin directory, with similar directory structure. For example, `cp clx000canbus.dylib Applications/SavvyCAN.app/Contents/PlugIns/canbus/ `. The `canbus` directory may first need to be created.
+Copy the module to the application's designated plugin directory, with similar directory structure. For example, `cp clx000canbus.dylib Applications/SavvyCAN.app/Contents/PlugIns/canbus/ `. The `canbus` directory may first need to be created.
 Note, The application must have been built with the local path for loading modules.
 
 ----
