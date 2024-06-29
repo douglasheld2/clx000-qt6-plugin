@@ -31,7 +31,11 @@ cmake --build .
 Cleaning is simply a matter of removing the `build` directory.
 
 ```
+<<<<<<< HEAD
 rm -rf build
+=======
+rm -ri build
+>>>>>>> ecc4959e9a2259a51180b94984c4b567c31d89d2
 ```
 
 ----
