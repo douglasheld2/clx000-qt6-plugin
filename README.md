@@ -46,7 +46,10 @@ rm -rf build
 Copy the module to the system Qt6 installation into the `plugins/canbus` directory. For example, `cp clx000canbus.so Qt/6.7.2/gcc_64/plugins/canbus/ `
 
 ### Application local usage.
-Copy the module to the application's designated plugin directory, with similar directory structure. For example, `cp clx000canbus.dylib Applications/SavvyCAN.app/Contents/PlugIns/canbus/ `. The `canbus` directory may first need to be created.
+Copy the module to the application's designated plugin directory, with similar directory structure. For example, `cp clx000canbus.dylib Applications/SavvyCAN.app/Contents/PlugIns/canbus/ `. 
+
+The `canbus` directory may first need to be created.
+
 Note, The application must have been built with the local path for loading modules.
 
 ----
