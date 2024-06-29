@@ -5,8 +5,11 @@ This project contains source code for a [Qt6 Serial Bus](https://doc.qt.io/qt-6/
 
 ## Configuring
 First install Qt version 6.7.2 or higher. See [HOWTO](https://github.com/collin80/SavvyCAN/discussions/804)
+
 Change to the directory where you extracted/cloned this code.
+
 Create a new `build` subdirectory to hold ephemeral build artifacts created by `cmake`.
+
 Use the `cmake` compiler provided in the Qt installation, and reference its location with the CMAKE_PREFIX_PATH variable.
 
 ```
@@ -31,11 +34,7 @@ cmake --build .
 Cleaning is simply a matter of removing the `build` directory.
 
 ```
-<<<<<<< HEAD
 rm -rf build
-=======
-rm -ri build
->>>>>>> ecc4959e9a2259a51180b94984c4b567c31d89d2
 ```
 
 ----
