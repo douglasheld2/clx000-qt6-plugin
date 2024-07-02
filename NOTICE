@@ -1,0 +1,41 @@
+This software is designed to run as a plugin to Qt. Qt is licensed under a variety of licenses.
+
+This application uses the Qt libraries, which are licensed under the LGPLv3 with a GPL Exception 1.0:
+QtCore
+QtSerialPort
+QtSerialBus
+
+
+## Qt GPL Exception 1.0
+
+The Qt libraries used in this application are subject to the Qt GPL Exception 1.0, which extends the permissions of the LGPL for linking with non-GPL-compatible libraries and plugins. To wit:
+
+```
+Exception 2:
+
+As a special exception, you have permission to combine this application
+with Plugins licensed under the terms of your choice, to produce an
+executable, and to copy and distribute the resulting executable under
+the terms of your choice. However, the executable must be accompanied
+by a prominent notice offering all users of the executable the entire
+source code to this application, excluding the source code of the
+independent modules, but including any changes you have made to this
+application, under the terms of this license.
+```
+
+For full details, please see the LICENSES directory in the Qt source code after installing the Qt "Sources" component.
+
+
+## Qt Source Code
+
+You do not need the Qt source code to build and use this plugin. But you may choose to access and modify this code per your needs.
+
+The source code for the Qt libraries used in this application can be obtained from Qt, by using the official Qt installer at https://www.qt.io/download-qt-installer-oss and choosing the Qt/Sources item in the custom install option.
+
+
+## License
+
+This work is licensed under the MIT License, and is a modification of a work distributed under the MIT License. See the LICENSE in this repository for details.
+
+For any questions or to obtain further information, please contact [car@douglasheld.net].
+
